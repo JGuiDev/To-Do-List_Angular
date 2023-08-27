@@ -1,0 +1,31 @@
+<div class="form-todos">
+  <form (ngSubmit)="addTodo()">
+    <input
+      type="text"
+      name="inputTodo"
+      placeholder="Insira a sua tarefa"
+      class="todo-input"
+      [(ngModel)]="inputTodo"
+      autocomplete="off"
+    />
+    <input type="submit" value="Adicionar Tarefa" class="todo-submit" />
+  </form>
+</div>
+
+<div class="todos">
+  <!-- Adicionando as tarefas de forma dinâmica -->
+  <div
+    class="todo"
+    *ngFor="let todo of todos; let i = index"
+    class="todo {{ todo.completed ? 'done' : '' }}"
+  >
+    <div class="id">{{ i }}</div>
+    <div class="content">{{ todo.content }}</div>
+    <button class="done" (click)="toggleDone(i)">
+      Completar <i class="fa-solid fa-check"></i>
+    </button>
+    <button class="delete" (click)="deleteTodo(i)">
+      Remove <i class="fa-solid fa-trash"></i>
+    </button>
+  </div>
+</div>
